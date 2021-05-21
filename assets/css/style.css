@@ -1,0 +1,444 @@
+:root {
+  --main-color: #00b1a3;
+}
+
+body {
+  margin     : 0px;
+  padding    : 0px;
+  font-family: "Roboto", sans-serif;
+}
+
+ul {
+  list-style-type: none;
+  padding        : 0px;
+  margin         : 0px;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height   : auto;
+}
+
+iframe {
+  width : 80vw;
+  height: 500px;
+}
+
+/* GLOBAL Classes */
+.grid {
+  display: grid;
+}
+
+.flex {
+  display: flex;
+}
+
+.to-right {
+  justify-content: right;
+}
+
+.to-center {
+  justify-items  : center;
+  justify-content: center;
+}
+
+.t-center {
+  text-align: center;
+}
+
+.p-relative {
+  position: relative;
+}
+
+.p-absolute {
+  position: absolute;
+}
+
+/* MENU */
+#menu,
+#cancel {
+  display: none;
+}
+
+#main-menu {
+  position: fixed;
+  right   : 0px;
+  bottom  : 20%;
+  color   : white;
+  z-index : 9999;
+}
+
+#main-menu>ul {
+  display     : grid;
+  grid-row-gap: 2px;
+}
+
+.menu-item {
+  background-color: var(--main-color);
+  padding         : 10px 20px;
+}
+
+.menu-item a {
+  color         : white;
+  text-transform: uppercase;
+}
+
+/* Heading */
+.heading-title {
+  color    : white;
+  font-size: 4em;
+}
+
+.date {
+  color: white;
+}
+
+.big-photo {
+  background-size      : cover;
+  background-repeat    : no-repeat;
+  height               : 100vh;
+  width                : 100%;
+  background-attachment: fixed;
+}
+
+.child-item-to-center {
+  display    : grid;
+  place-items: center;
+}
+
+/* Content */
+#content {
+  padding: 0px 50px;
+}
+
+.img-reseach-ellement {
+  width: 200px;
+  right: calc(600px - 200px / 2);
+  top  : 25%;
+}
+
+.vid-reseach-ellement {
+  height       : 60px;
+  margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+  padding-bottom: 50px;
+}
+
+footer p {
+  color         : var(--main-color);
+  text-transform: uppercase;
+}
+
+.sponsors-text {
+  font-size: 14px;
+}
+
+.st0 {
+  fill: #17b0a2;
+}
+
+.soc-icons svg {
+  width : 40px;
+  cursor: pointer;
+}
+
+.soc-icons svg:hover .st0 {
+  fill: #117a72;
+}
+
+
+
+
+
+:root {
+  --main-color: #00b1a3;
+}
+
+body {
+  margin     : 0px;
+  padding    : 0px;
+  font-family: "Roboto", sans-serif;
+}
+
+ul {
+  list-style-type: none;
+  padding        : 0px;
+  margin         : 0px;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height   : auto;
+}
+
+iframe {
+  width : 80vw;
+  height: 500px;
+}
+
+/* GLOBAL Classes */
+.grid {
+  display: grid;
+}
+
+.flex {
+  display: flex;
+}
+
+.to-right {
+  justify-content: right;
+}
+
+.to-center {
+  justify-items  : center;
+  justify-content: center;
+}
+
+.t-center {
+  text-align: center;
+}
+
+.p-relative {
+  position: relative;
+}
+
+.p-absolute {
+  position: absolute;
+}
+
+/* MENU */
+#menu,
+#cancel {
+  display: none;
+}
+
+#main-menu {
+  position: fixed;
+  right   : 0px;
+  bottom  : 20%;
+  color   : white;
+}
+
+#main-menu>ul {
+  display     : grid;
+  grid-row-gap: 2px;
+}
+
+.menu-item {
+  background-color: var(--main-color);
+  padding         : 10px 20px;
+}
+
+.menu-item a {
+  color         : white;
+  text-transform: uppercase;
+}
+
+/* Heading */
+.heading-title {
+  color    : white;
+  font-size: 4em;
+}
+
+.date {
+  color: white;
+}
+
+.big-photo {
+  background-size      : cover;
+  background-repeat    : no-repeat;
+  height               : 100vh;
+  width                : 100%;
+  background-attachment: fixed;
+}
+
+.child-item-to-center {
+  display    : grid;
+  place-items: center;
+}
+
+/* Content */
+#content {
+  padding: 0px 50px;
+}
+
+.img-reseach-ellement {
+  width: 200px;
+  right: calc(600px - 200px / 2);
+  top  : 25%;
+}
+
+.vid-reseach-ellement {
+  height       : 60px;
+  margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+  padding-bottom: 50px;
+}
+
+footer p {
+  color         : var(--main-color);
+  text-transform: uppercase;
+}
+
+.sponsors-text {
+  font-size: 14px;
+}
+
+.st0 {
+  fill: #17b0a2;
+}
+
+.soc-icons svg {
+  width : 40px;
+  cursor: pointer;
+}
+
+.soc-icons svg:hover .st0 {
+  fill: #117a72;
+}
+
+
+
+#sevanmap {
+  height: 800px;
+  width : 100%;
+}
+
+.navigation-arrows {
+  position        : absolute;
+  width           : 30px;
+  z-index         : 9999999;
+  background-color: white;
+  padding         : 5px;
+  cursor          : pointer;
+}
+
+.navigation-arrows:hover {
+  background-color: white;
+}
+
+#arrow-next {
+  transform: rotate(-90deg);
+  right    : 20px;
+  bottom   : 155px;
+}
+
+#arrow-prev {
+  transform: rotate(90deg);
+  right    : 20px;
+  bottom   : 104px;
+}
+
+path.leaflet-interactive.animate {
+  stroke-dasharray : 1920;
+  stroke-dashoffset: 1920;
+  animation        : dash 20s linear 3s forwards;
+}
+
+.default-marker {
+  background-color: white;
+  border          : solid 3px #17B0A2;
+  border-radius   : 50%;
+}
+
+.current-marker {
+  background-color: white;
+  border          : solid 8px #17B0A2;
+  border-radius   : 50%;
+}
+
+.footprint-marker {
+  background-color: white;
+  border-radius   : 50%;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+
+/* Popup */
+.modal {
+  display    : none;
+  position   : fixed;
+  z-index    : 999999;
+  padding-top: 100px;
+  left       : 0;
+  top        : 0;
+  width      : 43%;
+  height     : 74%;
+  overflow   : auto;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin          : auto;
+  padding         : 15px;
+  border          : 1px solid #888;
+  width           : 57%;
+}
+
+.modal-content h2 {
+  font-size: 18px;
+  margin   : 5px 0px 5px 0px;
+}
+
+.modal-content p {
+  margin: 0;
+}
+
+
+.close {
+  display    : none;
+  color      : #aaaaaa;
+  float      : right;
+  font-size  : 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color          : #000;
+  text-decoration: none;
+  cursor         : pointer;
+}
+
+/* end of Popup */
+
+.nav-arrows {
+  width     : 4%;
+  position  : absolute;
+  z-index   : 99999;
+  left      : 48%;
+  margin-top: -63px;
+  cursor    : pointer;
+  opacity: 0.8;
+}
+
+#nav-arrow-next {
+  margin-top: -80px;
+}
+
+#nav-arrow-prev {
+  margin-top: -45px;
+}
+
+#nav-arrow-next:hover, #nav-arrow-prev:hover{
+  opacity: 1;
+} 
