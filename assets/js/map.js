@@ -18,8 +18,8 @@ const CONFIG = {
 }
 
 const ZERRO_POINT = {
-    lat: 40.318278822577945,
-    lng: 44.6923828125,
+    lat: 40.3549167507906,
+    lng: 44.75555419921875,
     zoomLevel: 10
 }
 
@@ -36,6 +36,12 @@ const iconDefault = L.divIcon({
     iconSize: [CONFIG.iconsize, CONFIG.iconsize]
 });
 
+var iconBus = L.icon({
+    iconUrl: './assets/icons/Bus-school.svg',
+    iconSize: [80, 80],
+    //iconAnchor: [0, 0],
+});
+
 /*
 const iconCurrent = L.divIcon({
     className: 'current-marker',
@@ -43,11 +49,12 @@ const iconCurrent = L.divIcon({
 });
 */
 
+/*
 const iconFootprint = L.divIcon({
     className: 'footprint-marker',
     iconSize: [CONFIG.iconsize_footprint, CONFIG.iconsize_footprint]
 });
-
+*/
 
 fetch(jsonUrl)
     .then(function (response) { return response.json() })

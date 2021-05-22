@@ -41,26 +41,41 @@ function processJorney(jorneyData) {
     const jd = jorneyData.features
     drawJorney(jd)
     flyFirst(jd)
-
-    $("#nav-arrow-next").click(function () {
-        flyNext(jd)
-    })
-
-    $("#nav-arrow-prev").click(function () {
-        flyPrev(jd)
-    })
-
-    sevanMap.addEventListener('click', function (ev) {
-        console.log(ev.latlng.lat, ev.latlng.lng)
-    });
+    initEvents(jd)
 
 }
 
 function flyFirst(jd) {
+    const firsPoint = L.marker([jd[0].geometry.coordinates[0], jd[0].geometry.coordinates[1]], { icon: iconBus }).addTo(sevanMap);
     showModal(jd[0])
+
+    $("#nav-arrow-next").click(function () {
+        setTimeout(function () {
+            firsPoint.remove()
+        }, 1000)
+    })
+
+    $("#nav-arrow-prev").click(function () {
+        setTimeout(function () {
+            firsPoint.remove()
+        }, 1000)
+    })
+
+    $(document).keydown(function (e) {
+        if (e.which == 38 || e.which == 39 || e.which == 40 || e.which == 37) {
+            setTimeout(function () {
+                firsPoint.remove()
+            }, 1000)
+        }
+    })
+
+
 }
 
 function flyNext(jd) {
+    if (currentIndex + 1 == jd.length) {
+        return
+    }
     const prevStepCoords = jd[currentIndex].geometry.coordinates
     const nextStepData = getNextStep(jd)
     const routePoints = nextStepData.nextPaths
@@ -74,6 +89,9 @@ function flyNext(jd) {
 
 
 function flyPrev(jd) {
+    if (currentIndex == 0) {
+        return
+    }
     const prevStepCoords = jd[currentIndex].geometry.coordinates
     const nextStepData = getPrevStep(jd)
     const routePoints = nextStepData.nextPaths
@@ -94,7 +112,7 @@ function repositeMap(prevStepCoords, jd) {
 }
 
 
-function runAnimatedMarker(routePoints, jd, reverse=false) {
+function runAnimatedMarker(routePoints, jd, reverse = false) {
     const lineToFollow = L.polyline(routePoints)
     setTimeout(function () {
         if (Object.keys(animatedMarker).length !== 0) {
@@ -104,6 +122,7 @@ function runAnimatedMarker(routePoints, jd, reverse=false) {
 
         animatedMarker = L.animatedMarker((reverse) ? lineToFollow.getLatLngs().reverse() : lineToFollow.getLatLngs(), {
             interval: calcInterval(lineToFollow)
+            , icon: iconBus
             , onEnd: function () {
                 showModal(jd[currentIndex])
             }
@@ -163,9 +182,9 @@ function getNextStep(jd) {
 }
 
 
-function getPrevStep(jd){
+function getPrevStep(jd) {
     function getPrevPoint(jd) {
-        for (let i = currentIndex-1; i >= 0; i--) {
+        for (let i = currentIndex - 1; i >= 0; i--) {
             if (jd[i].geometry.type == "Point") {
                 console.log(i)
                 return i
@@ -175,7 +194,7 @@ function getPrevStep(jd){
 
     function getNextPaths(jd) {
         let pathCoordinates = []
-        for (let i = currentIndex-1; i >= 0; i--) {
+        for (let i = currentIndex - 1; i >= 0; i--) {
             if (jd[i].geometry.type == "LineString") {
                 pathCoordinates = pathCoordinates.concat(jd[i].geometry.coordinates)
             }
@@ -190,4 +209,30 @@ function getPrevStep(jd){
         nextPaths: getNextPaths(jd),
         nextPoint: getPrevPoint(jd)
     }
+}
+
+function initEvents(jd) {
+    $("#nav-arrow-next").click(function () {
+        flyNext(jd)
+    })
+
+    $("#nav-arrow-prev").click(function () {
+        flyPrev(jd)
+    })
+
+
+    $(document).keydown(function (e) {
+        console.log(e.which)
+        if (e.which == 38 || e.which == 39) {
+            flyNext(jd)
+        }
+        else if (e.which == 40 || e.which == 37) {
+            flyPrev(jd)
+        }
+    })
+
+    sevanMap.addEventListener('click', function (ev) {
+        console.log(ev.latlng.lat, ev.latlng.lng)
+    });
+
 }
