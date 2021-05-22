@@ -311,8 +311,6 @@ footer p {
   fill: #117a72;
 }
 
-
-
 #sevanmap {
   height: 800px;
   width : 100%;
@@ -377,7 +375,7 @@ path.leaflet-interactive.animate {
 .modal {
   display    : none;
   position   : fixed;
-  z-index    : 999999;
+  z-index    : 999;
   padding-top: 100px;
   left       : 0;
   top        : 0;
@@ -422,23 +420,76 @@ path.leaflet-interactive.animate {
 /* end of Popup */
 
 .nav-arrows {
-  width     : 4%;
-  position  : absolute;
-  z-index   : 99999;
-  left      : 48%;
-  margin-top: -63px;
-  cursor    : pointer;
-  opacity: 0.8;
+  width   : 55px;
+  position: absolute;
+  z-index : 999;
+  left    : 48%;
+  cursor  : pointer;
+  opacity : 0.8;
 }
 
 #nav-arrow-next {
-  margin-top: -80px;
+  /* margin-top: -80px;*/
+  top: 716px;
+  display: none;
 }
 
 #nav-arrow-prev {
-  margin-top: -45px;
+  top: 753px;
+  display: none;
 }
 
-#nav-arrow-next:hover, #nav-arrow-prev:hover{
+#nav-arrow-start {
+  margin-top: 34px;
+ 
+}
+
+#nav-arrow-next:hover,
+#nav-arrow-prev:hover {
   opacity: 1;
-} 
+}
+
+#overlay {
+  position        : absolute;
+  top             : 0;
+  left            : 0;
+  width           : 100%;
+  height          : 800px;
+  background-color: rgba(0, 0, 0, .6);
+  color           : white;
+  z-index         : 999;
+}
+
+#overlay h1 {
+  text-align   : center;
+  margin-top   : 250px;
+  font-size    : 50px;
+  margin-bottom: 80px;
+}
+
+#overlay p {
+  font-size  : 22px;
+  text-align : center;
+  font-weight: bold;
+}
+
+.overlay-date {
+  font-weight: normal !important;
+  font-size  : 18px;
+}
+
+#start-jorney {
+  font-size       : 22px;
+  color           : white;
+  text-transform  : uppercase;
+  width           : fit-content;
+  margin          : 5px auto;
+  display         : inherit;
+  margin-top      : 90px;
+  background-color: var(--main-color);
+  padding         : 4px;
+}
+
+#start-jorney:hover {
+  background-color: #079085;
+}

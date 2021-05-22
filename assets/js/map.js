@@ -6,12 +6,12 @@ const tileUrl = 'http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'
 //const tileUrl =  "http://tiles.wmflabs.org/hillshading/${z}/${x}/${y}.png	"
 const jsonUrl = '/json/data.geojson'
 
-const iconsize = 20
-const TIMOUT = 2000
+//const iconsize = 20
+//const TIMOUT = 2000
 const CONFIG = {
     iconsize: 10,
     //iconsize_current: 18,
-    iconsize_footprint: 5,
+    //iconsize_footprint: 5,
     color: "#17B0A2",
     flySeconds: 13,
     lineHeight: 5

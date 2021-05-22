@@ -40,22 +40,28 @@ function drawJorney(jorneyData) {
 function processJorney(jorneyData) {
     const jd = jorneyData.features
     drawJorney(jd)
-    flyFirst(jd)
+    //flyFirst(jd)
+    processStart(jd)
     initEvents(jd)
 
 }
+
+function processStart(jd){
+    $("#start-jorney, #nav-arrow-start").click(function(e){
+        e.preventDefault()
+        $("#overlay").slideUp("slow", function(){
+            flyFirst(jd)
+            $(".nav-arrows").fadeIn("slow")
+        })
+    })
+}
+
 
 function flyFirst(jd) {
     const firsPoint = L.marker([jd[0].geometry.coordinates[0], jd[0].geometry.coordinates[1]], { icon: iconBus }).addTo(sevanMap);
     showModal(jd[0])
 
-    $("#nav-arrow-next").click(function () {
-        setTimeout(function () {
-            firsPoint.remove()
-        }, 1000)
-    })
-
-    $("#nav-arrow-prev").click(function () {
+    $("#nav-arrow-next, #nav-arrow-prev").click(function () {
         setTimeout(function () {
             firsPoint.remove()
         }, 1000)
@@ -107,7 +113,7 @@ function repositeMap(prevStepCoords, jd) {
     const points = [prevStepCoords, jd[currentIndex].geometry.coordinates]
     const bounds = new L.LatLngBounds(points)
     sevanMap.fitBounds(bounds, {
-        padding: [500, 300]
+        padding: [500, 340]
     })
 }
 
@@ -212,11 +218,11 @@ function getPrevStep(jd) {
 }
 
 function initEvents(jd) {
-    $("#nav-arrow-next").click(function () {
+    $("#nav-arrow-prev").click(function () {
         flyNext(jd)
     })
 
-    $("#nav-arrow-prev").click(function () {
+    $("#nav-arrow-next").click(function () {
         flyPrev(jd)
     })
 
@@ -224,10 +230,10 @@ function initEvents(jd) {
     $(document).keydown(function (e) {
         console.log(e.which)
         if (e.which == 38 || e.which == 39) {
-            flyNext(jd)
+            flyPrev(jd)
         }
         else if (e.which == 40 || e.which == 37) {
-            flyPrev(jd)
+            flyNext(jd)
         }
     })
 
