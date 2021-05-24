@@ -80,11 +80,22 @@ iframe {
 .menu-item {
   background-color: var(--main-color);
   padding         : 10px 20px;
+  opacity: 0.8;
+}
+
+.menu-item:hover{
+  opacity: 1;
 }
 
 .menu-item a {
   color         : white;
   text-transform: uppercase;
+  width: 100%;
+  display: inline-block;
+}
+
+.menu-item-active{
+  opacity: 1;
 }
 
 /* Heading */
@@ -488,8 +499,9 @@ path.leaflet-interactive.animate {
   margin-top      : 90px;
   background-color: var(--main-color);
   padding         : 4px;
+  opacity: 0.7;
 }
 
 #start-jorney:hover {
-  background-color: #079085;
+  opacity: 1;
 }
