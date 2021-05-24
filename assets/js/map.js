@@ -4,7 +4,7 @@
 const tileUrl = 'http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'
 //const tileUrl = 'http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png'
 //const tileUrl =  "http://tiles.wmflabs.org/hillshading/${z}/${x}/${y}.png	"
-const jsonUrl = '/json/data.geojson'
+const jsonUrl = './json/data.geojson'
 
 //const iconsize = 20
 //const TIMOUT = 2000
