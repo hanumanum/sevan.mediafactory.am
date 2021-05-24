@@ -48,6 +48,7 @@ L.AnimatedMarker = L.Marker.extend({
 
   onAdd: function (map) {
     L.Marker.prototype.onAdd.call(this, map);
+    this.map = map
 
     // Start animating when added to the map
     if (this.options.autoStart) {
@@ -65,14 +66,24 @@ L.AnimatedMarker = L.Marker.extend({
       speed = this._latlngs[this._i-1].distanceTo(this._latlngs[this._i]) / this.options.distance * this.options.interval;
     }
 
+    //speed = 500
+    console.log(speed)
+
     // Only if CSS3 transitions are supported
+    
     if (L.DomUtil.TRANSITION) {
       if (this._icon) { this._icon.style[L.DomUtil.TRANSITION] = ('all ' + speed + 'ms linear'); }
       if (this._shadow) { this._shadow.style[L.DomUtil.TRANSITION] = 'all ' + speed + 'ms linear'; }
     }
+    
 
     // Move to the next vertex
     this.setLatLng(this._latlngs[this._i]);
+    if(this._i % 3 == 0){
+      this.map.setView(this._latlngs[this._i], 15);
+    }
+    
+    //console.log(this._latlngs[this._i])
     this._i++;
 
     // Queue up the animation to the next next vertex

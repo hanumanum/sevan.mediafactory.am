@@ -33,7 +33,6 @@ function drawJorney(jorneyData) {
                 .addTo(sevanMap);
         }
     }
-
 }
 
 
@@ -43,8 +42,13 @@ function processJorney(jorneyData) {
     //flyFirst(jd)
     processStart(jd)
     initEvents(jd)
-
+    showStarted()
 }
+
+function showStarted(){
+    $("#start-jorney").trigger("click")
+}
+
 
 function processStart(jd){
     $("#start-jorney, #nav-arrow-start").click(function(e){
@@ -110,12 +114,14 @@ function flyPrev(jd) {
 
 
 function repositeMap(prevStepCoords, jd) {
+    return
     const points = [prevStepCoords, jd[currentIndex].geometry.coordinates]
     const bounds = new L.LatLngBounds(points)
     sevanMap.fitBounds(bounds, {
-        padding: [500, 340]
+        paddingTopLeft: [300, 100]
     })
 }
+
 
 
 function runAnimatedMarker(routePoints, jd, reverse = false) {
@@ -127,7 +133,8 @@ function runAnimatedMarker(routePoints, jd, reverse = false) {
         }
 
         animatedMarker = L.animatedMarker((reverse) ? lineToFollow.getLatLngs().reverse() : lineToFollow.getLatLngs(), {
-            interval: calcInterval(lineToFollow)
+            interval: calcInterval(lineToFollow),
+            distance: lineToFollow.getDistance()
             , icon: iconBus
             , onEnd: function () {
                 showModal(jd[currentIndex])
@@ -140,7 +147,8 @@ function runAnimatedMarker(routePoints, jd, reverse = false) {
 
 
 function calcInterval(lineToFollow) {
-    const dd = (1 / lineToFollow.getDistance()) * 150
+    const dd = (1 / lineToFollow.getDistance()) * 50
+    console.log(dd)
     return dd
 }
 
@@ -192,7 +200,6 @@ function getPrevStep(jd) {
     function getPrevPoint(jd) {
         for (let i = currentIndex - 1; i >= 0; i--) {
             if (jd[i].geometry.type == "Point") {
-                console.log(i)
                 return i
             }
         }
@@ -228,7 +235,6 @@ function initEvents(jd) {
 
 
     $(document).keydown(function (e) {
-        console.log(e.which)
         if (e.which == 38 || e.which == 39) {
             flyPrev(jd)
         }

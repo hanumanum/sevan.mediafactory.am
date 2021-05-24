@@ -1,5 +1,6 @@
 :root {
   --main-color: #00b1a3;
+  --map-height: 900px;
 }
 
 body {
@@ -80,21 +81,21 @@ iframe {
 .menu-item {
   background-color: var(--main-color);
   padding         : 10px 20px;
-  opacity: 0.8;
+  opacity         : 0.8;
 }
 
-.menu-item:hover{
+.menu-item:hover {
   opacity: 1;
 }
 
 .menu-item a {
   color         : white;
   text-transform: uppercase;
-  width: 100%;
-  display: inline-block;
+  width         : 100%;
+  display       : inline-block;
 }
 
-.menu-item-active{
+.menu-item-active {
   opacity: 1;
 }
 
@@ -323,7 +324,7 @@ footer p {
 }
 
 #sevanmap {
-  height: 800px;
+  height: var(--map-height);
   width : 100%;
 }
 
@@ -441,18 +442,18 @@ path.leaflet-interactive.animate {
 
 #nav-arrow-next {
   /* margin-top: -80px;*/
-  top: 716px;
+  top    : 716px;
   display: none;
 }
 
 #nav-arrow-prev {
-  top: 753px;
+  top    : 753px;
   display: none;
 }
 
 #nav-arrow-start {
   margin-top: 34px;
- 
+
 }
 
 #nav-arrow-next:hover,
@@ -465,7 +466,7 @@ path.leaflet-interactive.animate {
   top             : 0;
   left            : 0;
   width           : 100%;
-  height          : 800px;
+  height          : var(--map-height);
   background-color: rgba(0, 0, 0, .6);
   color           : white;
   z-index         : 999;
@@ -499,7 +500,7 @@ path.leaflet-interactive.animate {
   margin-top      : 90px;
   background-color: var(--main-color);
   padding         : 4px;
-  opacity: 0.7;
+  opacity         : 0.7;
 }
 
 #start-jorney:hover {
