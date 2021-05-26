@@ -3,248 +3,189 @@ let animatedMarker = {}
 let loremIpsum = "լոռեմ իպսում դոլոռ սիթ ամեթ, ին ուսու վեռիթուս դելեծթուս, աութեմ հոմեռո պոսսիթ եի եոս. պռոբաթուս հենդռեռիթ պեռսեքուեռիս եսթ եու. պռո ութ վիռիս ոմնես պեռպեթուա. ան քուո գլոռիաթուռ ուլլամծոռպեռ ծոնսեքուունթուռ, եոս ելոքուենթիամ նեծեսսիթաթիբուս ին. եսթ դիծո իռիուռե եխպլիծառի եա, թամքուամ քուաեռենդում սիթ նո."
 const modal = $("#infomodal");
 
-L.Polyline = L.Polyline.include({
-    getDistance: function (system) {
-        // distance in meters
-        let mDistanse = 0,
-            length = this._latlngs.length;
-        for (var i = 1; i < length; i++) {
-            mDistanse += this._latlngs[i].distanceTo(this._latlngs[i - 1]);
-        }
-        // optional
-        if (system === 'imperial') {
-            return mDistanse / 1609.34;
-        } else {
-            return mDistanse / 1000;
-        }
-    }
-});
-
-
 function drawJorney(jorneyData) {
     for (let i = 0; i < jorneyData.length; i++) {
         if (jorneyData[i].geometry.type == "Point") {
-            L.marker([jorneyData[i].geometry.coordinates[0], jorneyData[i].geometry.coordinates[1]], { icon: iconDefault })
+            L.marker([jorneyData[i].geometry.coordinates[0], jorneyData[i].geometry.coordinates[1]], { icon: iconCircle })
                 .addTo(sevanMap);
         }
 
         else if (jorneyData[i].geometry.type == "LineString") {
-            L.polyline(jorneyData[i].geometry.coordinates, { color: CONFIG.color, weight: CONFIG.lineHeight })
+            L.polyline(jorneyData[i].geometry.coordinates, { color: CONFIG.color, weight: CONFIG.lineHeight, smoothFactor: 1 })
                 .addTo(sevanMap);
         }
     }
 }
 
-
 function processJorney(jorneyData) {
     const jd = jorneyData.features
     drawJorney(jd)
-    //flyFirst(jd)
     processStart(jd)
     initEvents(jd)
     showStarted()
 }
 
-function showStarted(){
+function showStarted() {
     $("#start-jorney").trigger("click")
 }
 
-
-function processStart(jd){
-    $("#start-jorney, #nav-arrow-start").click(function(e){
+function processStart(jd) {
+    $("#start-jorney, #nav-arrow-start").click(function (e) {
         e.preventDefault()
-        $("#overlay").slideUp("slow", function(){
-            flyFirst(jd)
+        $("#overlay").slideUp("slow", function () {
+            //mov.flyNext()
             $(".nav-arrows").fadeIn("slow")
         })
     })
 }
 
-
-function flyFirst(jd) {
-    const firsPoint = L.marker([jd[0].geometry.coordinates[0], jd[0].geometry.coordinates[1]], { icon: iconBus }).addTo(sevanMap);
-    showModal(jd[0])
-
-    $("#nav-arrow-next, #nav-arrow-prev").click(function () {
-        setTimeout(function () {
-            firsPoint.remove()
-        }, 1000)
-    })
-
-    $(document).keydown(function (e) {
-        if (e.which == 38 || e.which == 39 || e.which == 40 || e.which == 37) {
-            setTimeout(function () {
-                firsPoint.remove()
-            }, 1000)
-        }
-    })
-
-
-}
-
-function flyNext(jd) {
-    if (currentIndex + 1 == jd.length) {
-        return
+class Movements {
+    constructor(jd) {
+        this.jd = jd
+        this.currentIndex = 0
+        this.runmodal = true
     }
-    const prevStepCoords = jd[currentIndex].geometry.coordinates
-    const nextStepData = getNextStep(jd)
-    const routePoints = nextStepData.nextPaths
-    currentIndex = nextStepData.nextPoint
-    $(modal).fadeOut()
 
-    repositeMap(prevStepCoords, jd)
-    runAnimatedMarker(routePoints, jd)
-
-}
-
-
-function flyPrev(jd) {
-    if (currentIndex == 0) {
-        return
-    }
-    const prevStepCoords = jd[currentIndex].geometry.coordinates
-    const nextStepData = getPrevStep(jd)
-    const routePoints = nextStepData.nextPaths
-    currentIndex = nextStepData.nextPoint
-    $(modal).fadeOut()
-
-    repositeMap(prevStepCoords, jd)
-    runAnimatedMarker(routePoints, jd, true)
-}
-
-
-function repositeMap(prevStepCoords, jd) {
-    return
-    const points = [prevStepCoords, jd[currentIndex].geometry.coordinates]
-    const bounds = new L.LatLngBounds(points)
-    sevanMap.fitBounds(bounds, {
-        paddingTopLeft: [300, 100]
-    })
-}
-
-
-
-function runAnimatedMarker(routePoints, jd, reverse = false) {
-    const lineToFollow = L.polyline(routePoints)
-    setTimeout(function () {
-        if (Object.keys(animatedMarker).length !== 0) {
-            animatedMarker.stop()
-            animatedMarker.remove()
+    flyFirst() {
+        if (this.currentIndex != 0) {
+            return
         }
 
-        animatedMarker = L.animatedMarker((reverse) ? lineToFollow.getLatLngs().reverse() : lineToFollow.getLatLngs(), {
-            interval: calcInterval(lineToFollow),
-            distance: lineToFollow.getDistance()
-            , icon: iconBus
-            , onEnd: function () {
-                showModal(jd[currentIndex])
-            }
-        })
-        sevanMap.addLayer(animatedMarker)
-    }, 1000)
+        const nextStep = this.jd[this.currentIndex].geometry.coordinates
+        const modaldata = this.jd[this.currentIndex]
+        flyAndSetMarker(nextStep)
+        showModal(modaldata)
+    }
 
+
+    flyNext() {
+        this.currentIndex++
+        if (this.currentIndex == this.jd.length) {
+            this.currentIndex = this.jd.length - 1
+            return
+        }
+
+        const nextStep = this.jd[this.currentIndex].geometry.coordinates
+        const modaldata = this.jd[this.currentIndex]
+
+        flyAndSetMarker(nextStep)
+        showModal(modaldata)
+    }
+
+    flyPrev() {
+        this.currentIndex--
+        if (this.currentIndex == -1) {
+            this.currentIndex = 0
+            return
+        }
+
+        const nextStep = this.jd[this.currentIndex].geometry.coordinates
+        const modaldata = this.jd[this.currentIndex]
+        flyAndSetMarker(nextStep)
+        showModal(modaldata)
+
+    }
 }
 
 
-function calcInterval(lineToFollow) {
-    const dd = (1 / lineToFollow.getDistance()) * 50
-    console.log(dd)
-    return dd
+function flyAndSetMarker(nextStep) {
+    L.marker(nextStep).addTo(sevanMap);
+    sevanMap.flyTo(nextStep, CONFIG.finalZoom, {
+        animate: true,
+        duration: CONFIG.flyToDuration / 1000
+    })
 }
+
 
 function showModal(modaldata) {
+    $(modal).hide()
+
     const span = $(".close")[0];
     const title = $(".modal-content > h2")
     const content = $(".modal-content > .content-excerpt")
-    $(modal).fadeIn("slow")
+
+    $(title).html(modaldata.properties.name)
+    $(content).html((modaldata.properties.excerpt) ? modaldata.properties.excerpt : loremIpsum)
 
     $(span).on("click", function () {
         $(modal).css("display", "none")
     })
 
-    $(title).html(modaldata.properties.name)
-    $(content).html((modaldata.properties.excerpt) ? modaldata.properties.excerpt : loremIpsum)
+    setTimeout(function () {
+        $(modal).fadeIn("slow")
+    }, CONFIG.flyToDuration)
 }
 
-
-function getNextStep(jd) {
-    function getNextPoint(jd) {
-        for (let i = currentIndex + 1; i < jd.length; i++) {
-            if (jd[i].geometry.type == "Point") {
-                return i
-            }
-        }
-    }
-
-    function getNextPaths(jd) {
-        let pathCoordinates = []
-        for (let i = currentIndex + 1; i < jd.length; i++) {
-            if (jd[i].geometry.type == "LineString") {
-                pathCoordinates = pathCoordinates.concat(jd[i].geometry.coordinates)
-            }
-
-            if (jd[i].geometry.type == "Point") {
-                return pathCoordinates
-            }
-        }
-    }
-
-    return {
-        nextPaths: getNextPaths(jd),
-        nextPoint: getNextPoint(jd)
-    }
-}
-
-
-function getPrevStep(jd) {
-    function getPrevPoint(jd) {
-        for (let i = currentIndex - 1; i >= 0; i--) {
-            if (jd[i].geometry.type == "Point") {
-                return i
-            }
-        }
-    }
-
-    function getNextPaths(jd) {
-        let pathCoordinates = []
-        for (let i = currentIndex - 1; i >= 0; i--) {
-            if (jd[i].geometry.type == "LineString") {
-                pathCoordinates = pathCoordinates.concat(jd[i].geometry.coordinates)
-            }
-
-            if (jd[i].geometry.type == "Point") {
-                return pathCoordinates
-            }
-        }
-    }
-
-    return {
-        nextPaths: getNextPaths(jd),
-        nextPoint: getPrevPoint(jd)
-    }
-}
 
 function initEvents(jd) {
+    const _jd = jd.filter(function (d) {
+        return d.geometry.type == "Point"
+    })
+
+    const mov = new Movements(_jd)
+    setTimeout(function () {
+        mov.flyFirst()
+    }, 3000)
+
+
     $("#nav-arrow-prev").click(function () {
-        flyNext(jd)
+        mov.flyNext()
     })
 
     $("#nav-arrow-next").click(function () {
-        flyPrev(jd)
+        mov.flyPrev()
     })
 
 
-    $(document).keydown(function (e) {
-        if (e.which == 38 || e.which == 39) {
-            flyPrev(jd)
+    let scrolling = true
+    $("#sevanmap").bind('mousewheel', function (event) {
+        event.preventDefault()
+
+        if (!scrolling)
+            return
+
+        if (event.originalEvent.wheelDelta >= 0) {
+            mov.flyPrev()
         }
-        else if (e.which == 40 || e.which == 37) {
-            flyNext(jd)
+        else {
+            mov.flyNext()
         }
-    })
+
+        scrolling = false
+        setTimeout(function () {
+            scrolling = true
+        }, CONFIG.flyToDuration)
+
+
+    });
+
 
     sevanMap.addEventListener('click', function (ev) {
         console.log(ev.latlng.lat, ev.latlng.lng)
     });
 
+}
+
+function makeMap() {
+    const sevanMap = L.map('sevanmap', {
+        scrollWheelZoom: false,
+        zoomControl: false,
+        tileSize: 20
+    })
+    sevanMap.setView([CONFIG.center.lat, CONFIG.center.lng], CONFIG.center.zoomLevel)
+
+    L.tileLayer(tileUrl, {
+        subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+        edgeBufferTiles: CONFIG.edgeBufferTiles,
+        reuseTiles: true
+    }).addTo(sevanMap);
+
+    return sevanMap
+}
+
+function makeCircleMarker(){
+    return L.divIcon({
+        className: 'circle-marker',
+        iconSize: [CONFIG.iconsize, CONFIG.iconsize]
+    });
 }

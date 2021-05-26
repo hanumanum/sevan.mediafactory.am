@@ -1,6 +1,6 @@
 :root {
   --main-color: #00b1a3;
-  --map-height: 900px;
+  --map-height: 93vh;
 }
 
 body {
@@ -359,7 +359,7 @@ path.leaflet-interactive.animate {
   animation        : dash 20s linear 3s forwards;
 }
 
-.default-marker {
+.circle-marker {
   background-color: white;
   border          : solid 3px #17B0A2;
   border-radius   : 50%;
@@ -388,11 +388,10 @@ path.leaflet-interactive.animate {
   display    : none;
   position   : fixed;
   z-index    : 999;
-  padding-top: 100px;
-  left       : 0;
+  padding-top: 4%;
+  left       : 5%;
   top        : 0;
-  width      : 43%;
-  height     : 74%;
+  width      : 30%;
   overflow   : auto;
 }
 
@@ -401,11 +400,12 @@ path.leaflet-interactive.animate {
   margin          : auto;
   padding         : 15px;
   border          : 1px solid #888;
-  width           : 57%;
+  width           : 100%;
+  box-sizing      : border-box;
 }
 
 .modal-content h2 {
-  font-size: 18px;
+  font-size: 17px;
   margin   : 5px 0px 5px 0px;
 }
 
@@ -441,13 +441,12 @@ path.leaflet-interactive.animate {
 }
 
 #nav-arrow-next {
-  /* margin-top: -80px;*/
-  top    : 716px;
+  top    : 83vh;
   display: none;
 }
 
 #nav-arrow-prev {
-  top    : 753px;
+  top    : 88vh;
   display: none;
 }
 
