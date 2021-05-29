@@ -12,13 +12,13 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
     integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /> -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin="" />
-  <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" /> -->
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
   <link rel="stylesheet" href="./assets/css/style.css">
-  <link rel="stylesheet" href="./assets/css/meida.css" />
+  <link rel="stylesheet" href="./assets/css/meida.css">
   <title>Document</title>
 </head>
 
@@ -145,21 +145,24 @@
   <div id="main-menu">
   </div>
 
+  <div id="story-container" class=""></div>
   <div id="infomodal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
       <img src="./images/main.jpg">
+      <div id="video-holder"></div>
       <h2>Վերնգիր</h2>
-      <div class="content-excerpt">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex quo impedit doloribus deserunt fugit totam facilis
-        atque tempore veniam rem, alias, inventore odit commodi hic ipsum eius adipisci. Nobis, autem! </div>
+      <div class="content-excerpt"></div>
+      <div class="authors"></div>
+      <a id="see-more" href="" target="_blank">Կարդալ Ավելին »</a>
     </div>
   </div>
   <div id="overlay">
-      <h1>Սևանի Ծաղկման <br> Պատճառը</h1>
-      <p>BY HETQ MEDIA FACTORY</p>
-      <p class="overlay-date">March 15, 2020</p>
-      <a href="#" id="start-jorney">Ուսումնասիրել քարտեզը</a>
-      <img class="nav-arrows" id="nav-arrow-start" src="./assets/icons/arrow down-01.svg">
+    <h1>Սևանի Ծաղկման <br> Պատճառը</h1>
+    <p>BY HETQ MEDIA FACTORY</p>
+    <p class="overlay-date">March 15, 2020</p>
+    <a href="#" id="start-jorney">Ուսումնասիրել քարտեզը</a>
+    <img class="nav-arrows" id="nav-arrow-start" src="./assets/icons/arrow down-01.svg">
   </div>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -167,10 +170,13 @@
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-mousewheel@3.1.13/jquery.mousewheel.min.js"></script>
-    <!-- <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script> -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/leaflet-edgebuffer@1.0.6/src/leaflet.edgebuffer.min.js"></script>-->
-  <!-- <script src="./assets/js/animatedMarker.js"></script> -->
+    <!-- 
+  <script src="https://unpkg.com/pouchdb@^5.2.0/dist/pouchdb.js"></script>
+  <script src="https://unpkg.com/leaflet.tilelayer.pouchdbcached@latest/L.TileLayer.PouchDBCached.js"></script>
+-->
+  <script src="https://cdn.jsdelivr.net/npm/jquery-mousewheel@3.1.13/jquery.mousewheel.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script src="./assets/js/movements.js"></script>
   <script src="./assets/js/functions.js"></script>
   <script src="./assets/js/map.js"></script>
   <script src="./assets/js/main.js"></script>

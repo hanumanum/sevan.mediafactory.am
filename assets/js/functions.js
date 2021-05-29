@@ -1,8 +1,3 @@
-let currentIndex = 0
-let animatedMarker = {}
-let loremIpsum = "լոռեմ իպսում դոլոռ սիթ ամեթ, ին ուսու վեռիթուս դելեծթուս, աութեմ հոմեռո պոսսիթ եի եոս. պռոբաթուս հենդռեռիթ պեռսեքուեռիս եսթ եու. պռո ութ վիռիս ոմնես պեռպեթուա. ան քուո գլոռիաթուռ ուլլամծոռպեռ ծոնսեքուունթուռ, եոս ելոքուենթիամ նեծեսսիթաթիբուս ին. եսթ դիծո իռիուռե եխպլիծառի եա, թամքուամ քուաեռենդում սիթ նո."
-const modal = $("#infomodal");
-
 function drawJorney(jorneyData) {
     for (let i = 0; i < jorneyData.length; i++) {
         if (jorneyData[i].geometry.type == "Point") {
@@ -20,145 +15,78 @@ function drawJorney(jorneyData) {
 function processJorney(jorneyData) {
     const jd = jorneyData.features
     drawJorney(jd)
-    processStart(jd)
+    makeWholeStories(jd)
     initEvents(jd)
     showStarted()
 }
 
 function showStarted() {
-    $("#start-jorney").trigger("click")
-}
-
-function processStart(jd) {
-    $("#start-jorney, #nav-arrow-start").click(function (e) {
-        e.preventDefault()
-        $("#overlay").slideUp("slow", function () {
-            //mov.flyNext()
-            $(".nav-arrows").fadeIn("slow")
-        })
-    })
-}
-
-class Movements {
-    constructor(jd) {
-        this.jd = jd
-        this.currentIndex = 0
-        this.runmodal = true
-    }
-
-    flyFirst() {
-        if (this.currentIndex != 0) {
-            return
-        }
-
-        const nextStep = this.jd[this.currentIndex].geometry.coordinates
-        const modaldata = this.jd[this.currentIndex]
-        flyAndSetMarker(nextStep)
-        showModal(modaldata)
-    }
-
-
-    flyNext() {
-        this.currentIndex++
-        if (this.currentIndex == this.jd.length) {
-            this.currentIndex = this.jd.length - 1
-            return
-        }
-
-        const nextStep = this.jd[this.currentIndex].geometry.coordinates
-        const modaldata = this.jd[this.currentIndex]
-
-        flyAndSetMarker(nextStep)
-        showModal(modaldata)
-    }
-
-    flyPrev() {
-        this.currentIndex--
-        if (this.currentIndex == -1) {
-            this.currentIndex = 0
-            return
-        }
-
-        const nextStep = this.jd[this.currentIndex].geometry.coordinates
-        const modaldata = this.jd[this.currentIndex]
-        flyAndSetMarker(nextStep)
-        showModal(modaldata)
-
-    }
+    //$("#start-jorney").trigger("click")
 }
 
 
-function flyAndSetMarker(nextStep) {
-    L.marker(nextStep).addTo(sevanMap);
-    sevanMap.flyTo(nextStep, CONFIG.finalZoom, {
-        animate: true,
-        duration: CONFIG.flyToDuration / 1000
+function makeWholeStories(allParts) {
+    const storyHolder = $(CONFIG.storyHolderSelector)
+    allParts.map(function (part, i) {
+        storyHolder.append(makeStoryPart(part, i))
     })
 }
 
 
-function showModal(modaldata) {
-    $(modal).hide()
 
-    const span = $(".close")[0];
-    const title = $(".modal-content > h2")
-    const content = $(".modal-content > .content-excerpt")
+function makeStoryPart(point, i) {
+    const videoHTML = `<div id="video-holder">${getVideoEmbedByUrl(point.properties.video)}</div>`
+    const imageHTML = `<img src="${point.properties.image}">`
+    const part = `<div id="story-id${i}" class="story-part">
+    <div class="story-content">
+      ${(point.properties.video != "") ? videoHTML : imageHTML} 
+      <h2>${point.properties.name}</h2>
+      <div class="content-excerpt">${point.properties.excerpt}</div>
+      <div class="authors">${point.properties.authors.join(" , ")}</div>
+      ${(point.properties.more != "") ? '<a id="see-more" href="" target="_blank">Կարդալ Ավելին »</a>' : ""}
+    </div>
+  </div>`
 
-    $(title).html(modaldata.properties.name)
-    $(content).html((modaldata.properties.excerpt) ? modaldata.properties.excerpt : loremIpsum)
-
-    $(span).on("click", function () {
-        $(modal).css("display", "none")
-    })
-
-    setTimeout(function () {
-        $(modal).fadeIn("slow")
-    }, CONFIG.flyToDuration)
+    return part;
 }
 
 
 function initEvents(jd) {
-    const _jd = jd.filter(function (d) {
+    const onlyPoints = function (d) {
         return d.geometry.type == "Point"
-    })
-
+    }
+    const _jd = jd.filter(onlyPoints)
     const mov = new Movements(_jd)
-    setTimeout(function () {
-        mov.flyFirst()
-    }, 3000)
 
-
-    $("#nav-arrow-prev").click(function () {
-        mov.flyNext()
+    const slider = $(CONFIG.storyHolderSelector).slick({
+        vertical: true,
+        swipe: true,
+        infinite: false,
+        prevArrow: "#nav-arrow-prev",
+        nextArrow: "#nav-arrow-next"
     })
 
-    $("#nav-arrow-next").click(function () {
-        mov.flyPrev()
+    slider.on("afterChange", function () {
+        const id = $(".slick-current.slick-active").attr("id").replace("story-id", "")
+        mov.flyTo(id)
     })
 
 
-    let scrolling = true
-    $("#sevanmap").bind('mousewheel', function (event) {
-        event.preventDefault()
+    $("#nav-arrow-prev, #nav-arrow-next").hide()
 
-        if (!scrolling)
-            return
-
-        if (event.originalEvent.wheelDelta >= 0) {
-            mov.flyPrev()
-        }
-        else {
+    $(document).keydown(function (e) {
+        if (e.keyCode == 40) {
             mov.flyNext()
         }
-
-        scrolling = false
-        setTimeout(function () {
-            scrolling = true
-        }, CONFIG.flyToDuration)
-
-
     });
 
+    $("#start-jorney, #nav-arrow-start").click(function (e) {
+        e.preventDefault()
+        $("#overlay").slideUp("slow", function () {
+            $(".nav-arrows").fadeIn("slow")
+            mov.flyFirst()
+        })
+    })
 
     sevanMap.addEventListener('click', function (ev) {
         console.log(ev.latlng.lat, ev.latlng.lng)
@@ -176,16 +104,21 @@ function makeMap() {
 
     L.tileLayer(tileUrl, {
         subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
-        edgeBufferTiles: CONFIG.edgeBufferTiles,
-        reuseTiles: true
+        reuseTiles: true,
+        useCache: true,
+        //tileSize:250
     }).addTo(sevanMap);
 
     return sevanMap
 }
 
-function makeCircleMarker(){
+function makeCircleMarker() {
     return L.divIcon({
         className: 'circle-marker',
         iconSize: [CONFIG.iconsize, CONFIG.iconsize]
     });
+}
+
+function getVideoEmbedByUrl(url, width) {
+    return '<iframe src="' + url + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
 }

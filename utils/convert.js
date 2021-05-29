@@ -1,6 +1,6 @@
 // index.js
-const kmlfile = "../json/data.kml"
-const geofile = "../json/data.geojson"
+const kmlfile = "../json/data-updated.kml"
+const geofile = "../json/data-updated.geojson"
 const converter = require("@mapbox/togeojson");
 const fs = require("fs");
 const DOMParser = require("xmldom").DOMParser;

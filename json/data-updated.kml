@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Untitled layer</name>
+    <Style id="icon-1899-0288D1-normal">
+      <IconStyle>
+        <color>ffd18802</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-1899-0288D1-highlight">
+      <IconStyle>
+        <color>ffd18802</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-1899-0288D1">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-1899-0288D1-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-1899-0288D1-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Placemark>
+      <name>1. Շորժա. գյուղը, մարդիկ, պանսիոնատը</name>
+      <description><![CDATA[Մեր կանգառը Շողակաթ, ավելի հայտնի որպես Շորժա, գյուղն էր՝ Սևանի արևելյան մասում։<br>Իջանք Շորժայի՝ սննդի միակ խանութի մոտ, որտեղ գյուղի տղամարդիկ շախմատ էին խաղում։ Խաղացողներից էր նաև Աշոտ Կիրակոսյանը, ով անընդհատ կատակում էր, որ ինքն է հաղթելու ,էս պարտիանե։ Հաղթեց նրա լուռ խաղակիցը՝ Սամվելը։]]></description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>
+          45.272943,40.501072,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>2. Սևանի «Ռակետա» նավերը և լքված պանսիոնատը</name>
+      <description>Խորհրդային Միության ժամանակների սերունդը, հավանաբար, ժպիտով կհիշի Սևանի «Ռակետա» նավերը: Ասում են, որ այն զբոսաշրջային պարտադիր այցելության վայրերից էր, իսկ նավավարները միշտ կոկիկ հարդարված համազգեստով էին։ </description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>
+          45.2730288,40.5010231,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>3․ Lքված պանսիոնատը</name>
+      <description>Նորաշեն գյուղի արգելոցի հարևանությամբ է գտնվում այս լքված, խորհրդային շրջանի պանսիոնատներից մեկը: Ժամանակին ամենամաքուր ափերից Է եղել, այժմ թափթփված է ու կեղտոտ:</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>
+          45.056082,40.503852,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>4․ Անարծիվ Արծվանիստը</name>
+      <description>Սևանա լճի ափին շատ մոտ գտնվող Արծվանիստ գյուղում ոչ մի արծիվ չտեսա, ավելի ճիշտ՝ ժայռերի վերևում սավառնող մի մեծ թռչուն եմ նկատել, բայց վստահ չեմ՝ արդյո՞ք հենց ինքն էր օդերի «նայողը», թե չէ։ Բայց ես արծիվներ հաշվելու չէի գնացել. հետաքրքրասեր բնակիչներն են ստեղծում դրա միստիկ ու ջերմ կոլորիտը։ Կարդալ ավելին։</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>
+          45.50561,40.155311,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>6. Դրախտ(իկ)</name>
+      <description><![CDATA[Երազանքներ՝<br>Ճանապարհները վերականգնել<br>Շատ կարտոֆիլ հավաքել<br>Չորսականի հեծանիվ քշել <br>Տարբեր տեսակի բոթասներ ունենալ <br>Սառույցի վրա ժամերով սահնակ քշել<br>Գազի խնդիրը լուծված համարել <br>Դպրոցում դասի ժամերը փոխարինել խաղերով<br>Նատաշա Մանվելովնայի դասերին չնստել<br>Մեքենա ունենալ (իսկական)<br>Կարդալ ավելին<br>Գլխի վրա կանգնել սովորել<br>Միաժամանակ մի քանի փուչիկ փչել սովորել]]></description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>
+          45.236442,40.565426,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>7․Հողահան բազմաֆունկցիոնալ էքսկավատորն անսարք է արդեն 6 տարի</name>
+      <description><![CDATA[Ծափաթաղում մարդիկ տարբեր են, իսկ խնդիրները՝ նույնը։ Մեկը չի սիրում Փաշինյանին, մյուսը ՝ Քոչարյանին, բայց կա մի բան, որ սիրում են բոլորը. Սևանը։ <br><br>Սևանա լճի ծաղկման պատճառով գյուղի անասնապահները մի շարք կորուստներ են կրել։ Ծափաթաղը լուռ գյուղ է, ինչն ավելի լսելի է դարձնում լճի ալիքների հանդարտ ձայնը։   ]]></description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>
+          44.942601,40.550692,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>8․ Ծափաթաղ. քաղաքական և բնապահպանական զրույցներ</name>
+      <description><![CDATA[Ծափաթաղում մարդիկ տարբեր են, իսկ խնդիրները՝ նույնը։ Մեկը չի սիրում Փաշինյանին, մյուսը ՝ Քոչարյանին, բայց կա մի բան, որ սիրում են բոլորը. Սևանը։ <br><br>Սևանա լճի ծաղկման պատճառով գյուղի անասնապահները մի շարք կորուստներ են կրել։ Ծափաթաղը լուռ գյուղ է, ինչն ավելի լսելի է դարձնում լճի ալիքների հանդարտ ձայնը։   ]]></description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>
+          45.47347,40.409672,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>9. Անվճար լճաղբ</name>
+      <description>Սևանի ափերն ունեն «տերեր», բայց դա չի երաշխավորում լողափերի մաքրությունը եւ չի փրկում ջուրն աղբից։ Ամենուր սննդի փաթեթներ են, պլաստիկ շշեր և տարատեսակ աղբ։ Այս ամենը հանգեցնում է ոչ միայն հարակից տարածքի՝ բնության աղտոտմանը, այլև հենց ջրի գունափոխության պատճառ դառնում։ </description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>
+          45.012175,40.562214,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>11․ Հայրավանքի հիշողությունները</name>
+      <description>Հայրավանքի առաջին տունը մտանք կեսօրին։ Այն կառուցվել էր 1952 թվականին՝ Սևանի մակարդակի փոփոխությամբ պայմանավորված՝ լճին ավելի մոտ։ Անուշն ու Էլմիրան բացեցին իրենց ընտանեկան ալբոմը և առանձնացրին լճափին արված հին լուսանկարներ։ Կարդալ ավելին</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>
+          45.099133,40.430411,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>12․ Սևանի մակարդակի բարձրացման բնապահպանական ռիսկերը</name>
+      <description>Սևանի ջրի մակարդակի բարձրացման նպատակով 2002-2012 թվականներին ջրածածկ եղան առափնյա հատվածներ։ Այդ գործընթացն առաջացրեց բնապահպանական խնդիրներ, քանի որ բուսածած տարածքներն առանց մաքրելու անցան ջրի տակ՝ վերածվելով ճահճի։ Լճի մակարդակի բարձրացման աշխատանքները շարունակվում են և 1901.5 մ-ից ցածր գոտում ապօրինի մոտ 3800 շինությունները ենթակա են ապամոնտաժման։</description>
+      <styleUrl>#icon-1899-0288D1</styleUrl>
+      <Point>
+        <coordinates>
+          44.980224,40.541873,0
+        </coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>
