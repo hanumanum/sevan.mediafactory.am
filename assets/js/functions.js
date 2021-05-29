@@ -15,7 +15,7 @@ function drawJorney(jorneyData) {
 function processJorney(jorneyData) {
     const jd = jorneyData.features
     drawJorney(jd)
-    makeWholeStories(jd)
+    makeWholeStory(jd)
     initEvents(jd)
     showStarted()
 }
@@ -25,18 +25,16 @@ function showStarted() {
 }
 
 
-function makeWholeStories(allParts) {
+function makeWholeStory(allParts) {
     const storyHolder = $(CONFIG.storyHolderSelector)
     allParts.map(function (part, i) {
         storyHolder.append(makeStoryPart(part, i))
     })
 }
 
-
-
 function makeStoryPart(point, i) {
     const videoHTML = `<div id="video-holder">${getVideoEmbedByUrl(point.properties.video)}</div>`
-    const imageHTML = `<img src="${point.properties.image}">`
+    const imageHTML = `<a data-lightbox="image-${i}" href="${point.properties.image}"> <img src="${point.properties.image}"> </a>`
     const part = `<div id="story-id${i}" class="story-part">
     <div class="story-content">
       ${(point.properties.video != "") ? videoHTML : imageHTML} 
@@ -50,7 +48,6 @@ function makeStoryPart(point, i) {
     return part;
 }
 
-
 function initEvents(jd) {
     const onlyPoints = function (d) {
         return d.geometry.type == "Point"
@@ -62,8 +59,8 @@ function initEvents(jd) {
         vertical: true,
         swipe: true,
         infinite: false,
-        prevArrow: "#nav-arrow-prev",
-        nextArrow: "#nav-arrow-next"
+        prevArrow: "#nav-arrow-next",
+        nextArrow: "#nav-arrow-prev"
     })
 
     slider.on("afterChange", function () {

@@ -12,7 +12,6 @@ class Movements {
         if(index == this.currentIndex){
             return
         }
-        console.log("adfafds")
 
         this.currentIndex = index
         const nextStep = this.jd[this.currentIndex].geometry.coordinates
