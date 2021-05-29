@@ -35,13 +35,14 @@ function makeWholeStory(allParts) {
 function makeStoryPart(point, i) {
     const videoHTML = `<div id="video-holder">${getVideoEmbedByUrl(point.properties.video)}</div>`
     const imageHTML = `<a data-lightbox="image-${i}" href="${point.properties.image}"> <img src="${point.properties.image}"> </a>`
+    const link = `<a id="see-more" href="${point.properties.more}" target="_blank">Կարդալ Ավելին »</a>`
     const part = `<div id="story-id${i}" class="story-part">
     <div class="story-content">
       ${(point.properties.video != "") ? videoHTML : imageHTML} 
       <h2>${point.properties.name}</h2>
       <div class="content-excerpt">${point.properties.excerpt}</div>
       <div class="authors">${point.properties.authors.join(" , ")}</div>
-      ${(point.properties.more != "") ? '<a id="see-more" href="" target="_blank">Կարդալ Ավելին »</a>' : ""}
+      ${(point.properties.more != "") ? link : ""}
     </div>
   </div>`
 
