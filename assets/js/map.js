@@ -1,5 +1,5 @@
 //https://www.google.com/maps/d/edit?hl=en&mid=1U1yCBkZNnb7eBoxHtaIxkAstA_uDLVJm&ll=40.37642717752849%2C45.062418562653825&z=11
-const tileUrl = 'http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'
+const tileUrl = 'https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'
 const jsonUrl = './json/data-updated.json'
 const CONFIG = {
     storyHolderSelector:"#story-container",
