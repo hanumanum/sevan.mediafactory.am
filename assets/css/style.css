@@ -396,7 +396,7 @@ path.leaflet-interactive.animate {
   height          : var(--map-height);
   overflow        : auto;
   background-color: #ffffffde;
-  display         : none;
+  opacity: 0;
 }
 
 

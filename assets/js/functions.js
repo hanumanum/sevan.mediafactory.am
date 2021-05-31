@@ -15,7 +15,8 @@ function drawJorney(jorneyData) {
 function processJorney(jorneyData) {
     const jd = jorneyData.features
     drawJorney(jd)
-    makeWholeStory(jd, initEvents)
+    makeWholeStory(jd)
+    initEvents(jd)
 }
 
 function makeWholeStory(allParts, callback) {
@@ -23,9 +24,6 @@ function makeWholeStory(allParts, callback) {
     allParts.map(function (part, i) {
         storyHolder.append(makeStoryPart(part, i))
     })
-    setTimeout(function(){
-        callback(allParts)
-    },1000)
 }
 
 function makeStoryPart(point, i) {
@@ -45,6 +43,7 @@ function makeStoryPart(point, i) {
     return part;
 }
 
+
 function initEvents(jd) {
     const onlyPoints = function (d) {
         return d.geometry.type == "Point"
@@ -62,22 +61,17 @@ function initEvents(jd) {
 
     slider.on("afterChange", function () {
         const id = $(".slick-current.slick-active").attr("id").replace("story-id", "")
-        mov.flyTo(id)
+        mov.flyTo(id, handleArrowsBehavior)
     })
 
 
     $("#nav-arrow-prev, #nav-arrow-next").hide()
 
-    $(document).keydown(function (e) {
-        if (e.keyCode == 40) {
-            mov.flyNext()
-        }
-    });
 
-    $("#start-jorney, #nav-arrow-start").click(function (e) {
+    $("#start-jorney, #nav-arrow-start, #overlay2").click(function (e) {
         e.preventDefault()
         $("#overlay2").slideUp("slow", function () {
-            $(".nav-arrows").fadeIn("slow")
+            $("#nav-arrow-prev").fadeIn("slow")
             mov.flyFirst()
         })
     })
@@ -88,9 +82,33 @@ function initEvents(jd) {
 
     $("#nav-arrow-before-start, #overlay1").click(function(ev){
         $("#overlay1").slideUp("slow")
-        $("#story-container").fadeIn("slow")
+        $("#story-container").css("opacity",1)
         $("#overlay2").fadeIn("slow")
     })
+
+
+    function handleArrowsBehavior(index){
+        /*console.clear()
+        console.log(index, _jd.length)
+        */
+        if(index==0){
+            $("#nav-arrow-prev").hide()
+            $("#nav-arrow-next").fadeIn("slow")
+            console.log("0")
+
+        }
+        else if(index==_jd.length){
+            $("#nav-arrow-prev").fadeIn("slow")
+            $("#nav-arrow-next").hide()
+            console.log("end")
+        }
+        else{
+            $("#nav-arrow-prev").fadeIn("slow")
+            $("#nav-arrow-next").fadeIn("slow")
+            console.log("all")
+        }
+
+    }
 
 }
 

@@ -8,7 +8,7 @@ class Movements {
         this.currentIndex
     }
 
-    flyTo(index) {
+    flyTo(index, indexBasedCallback) {
         if(index == this.currentIndex){
             return
         }
@@ -16,6 +16,7 @@ class Movements {
         this.currentIndex = index
         const nextStep = this.jd[this.currentIndex].geometry.coordinates
         flyAndSetMarker(nextStep, this.currentIndex)
+        indexBasedCallback(index)
     }
 
     flyFirst() {
