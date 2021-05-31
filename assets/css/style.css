@@ -396,19 +396,20 @@ path.leaflet-interactive.animate {
   height          : var(--map-height);
   overflow        : auto;
   background-color: #ffffffde;
+  display         : none;
 }
 
 
-.story-part{
-  padding: 5px 15px;
-  min-height: var(--map-height);
-  width: 100%;
-  box-sizing: border-box;
+.story-part {
+  padding         : 5px 15px;
+  min-height      : var(--map-height);
+  width           : 100%;
+  box-sizing      : border-box;
   /* margin-bottom: 80px;*/
 
 }
 
-.story-part h2{
+.story-part h2 {
   font-size: 20px;
 }
 
@@ -507,12 +508,12 @@ path.leaflet-interactive.animate {
 /* end of Popup */
 
 .nav-arrows {
-  width: 55px;
+  width   : 55px;
   position: absolute;
-  z-index: 1000;
-  left: 15%;
-  cursor: pointer;
-  opacity: 0.8;
+  z-index : 1000;
+  left    : 15%;
+  cursor  : pointer;
+  opacity : 0.8;
 }
 
 #nav-arrow-next {
@@ -525,18 +526,28 @@ path.leaflet-interactive.animate {
   display: none;
 }
 
-#nav-arrow-start {
-  margin: 34px auto 0 auto;
+#nav-arrow-start,
+#nav-arrow-before-start {
+  margin  : 34px auto 0 auto;
   position: static;
-  display: block;
+  display : block;
 }
+
+#nav-arrow-before-start {
+  margin  : 80px auto 0 auto;
+}
+
 
 #nav-arrow-next:hover,
 #nav-arrow-prev:hover {
   opacity: 1;
 }
 
-#overlay {
+#overlay2 {
+  display: none;
+}
+
+.overlay {
   position        : absolute;
   top             : 0;
   left            : 0;
@@ -547,14 +558,14 @@ path.leaflet-interactive.animate {
   z-index         : 999;
 }
 
-#overlay h1 {
+.overlay h1 {
   text-align   : center;
   margin-top   : 250px;
   font-size    : 50px;
   margin-bottom: 80px;
 }
 
-#overlay p {
+.overlay p {
   font-size  : 22px;
   text-align : center;
   font-weight: bold;
@@ -580,4 +591,19 @@ path.leaflet-interactive.animate {
 
 #start-jorney:hover {
   opacity: 1;
+}
+
+#overlay1 {
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+}
+
+#overlay1 div {
+  width: 60%;
+}
+
+#overlay1 p {
+  font-weight: normal;
+  margin-top : 40px;
 }

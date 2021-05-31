@@ -15,21 +15,17 @@ function drawJorney(jorneyData) {
 function processJorney(jorneyData) {
     const jd = jorneyData.features
     drawJorney(jd)
-    makeWholeStory(jd)
-    initEvents(jd)
-    showStarted()
+    makeWholeStory(jd, initEvents)
 }
 
-function showStarted() {
-    //$("#start-jorney").trigger("click")
-}
-
-
-function makeWholeStory(allParts) {
+function makeWholeStory(allParts, callback) {
     const storyHolder = $(CONFIG.storyHolderSelector)
     allParts.map(function (part, i) {
         storyHolder.append(makeStoryPart(part, i))
     })
+    setTimeout(function(){
+        callback(allParts)
+    },1000)
 }
 
 function makeStoryPart(point, i) {
@@ -80,7 +76,7 @@ function initEvents(jd) {
 
     $("#start-jorney, #nav-arrow-start").click(function (e) {
         e.preventDefault()
-        $("#overlay").slideUp("slow", function () {
+        $("#overlay2").slideUp("slow", function () {
             $(".nav-arrows").fadeIn("slow")
             mov.flyFirst()
         })
@@ -89,6 +85,12 @@ function initEvents(jd) {
     sevanMap.addEventListener('click', function (ev) {
         console.log(ev.latlng.lat, ev.latlng.lng)
     });
+
+    $("#nav-arrow-before-start, #overlay1").click(function(ev){
+        $("#overlay1").slideUp("slow")
+        $("#story-container").fadeIn("slow")
+        $("#overlay2").fadeIn("slow")
+    })
 
 }
 
