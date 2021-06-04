@@ -608,22 +608,26 @@ path.leaflet-interactive.animate {
   margin-top : 40px;
 }
 
+.pollution-intro-holder {
+  width           : 50%;
+  margin          : 42px auto;
+  background-color: #000000c9;
+  color           : #ebe5e5;
+  padding         : 14px;
+}
 
 
 .pollution-intro {
-  width    : 50%;
   font-size: 22px;
-  margin   : 50px auto 16px auto;
+  margin   : 0px auto 16px auto;
 }
 
 .pollution-intro-metodology {
-  width    : 50%;
   font-size: 22px;
-  margin   : 32px auto 40px auto;
+  margin   : 4px auto 40px auto;
 }
 
 .pollution-intro-metodology-list {
-  width    : 50%;
   font-size: 22px;
-  margin   : 18px auto 40px auto;
+  margin   : 18px auto 0px auto;
 }
