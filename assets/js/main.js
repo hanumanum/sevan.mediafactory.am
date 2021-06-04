@@ -14,21 +14,45 @@ $(document).ready(function () {
     $('#main-menu').load('./templates/nav.html', function () {
       $('.menu-item').removeClass("menu-item-active")
       const slugs = window.location.pathname.split("/")
-      const slug = slugs[slugs.length-1]
-      const slug_article = slugs[slugs.length-2]
-     
+      const slug = slugs[slugs.length - 1]
+      const slug_article = slugs[slugs.length - 2]
+
       $('.menu-item a').each(function (i, l) {
-        if(slug_article == 'articles' && $(l).prop("href").indexOf("articles")){
+        if (slug_article == 'articles' && $(l).prop("href").indexOf("articles")) {
           $(l).parent().addClass("menu-item-active")
         }
-        
-        if($(l).prop("href")!="" &&  $(l).prop("href").indexOf(slug)>=0){
+
+        if ($(l).prop("href") != "" && $(l).prop("href").indexOf(slug) >= 0) {
           $(l).parent().addClass("menu-item-active")
         }
       })
     });
 
   }
+
+  /*
+  $(".pollution-intro").hide();
+  showElement(".pollution-intro")
+
+
+  function showElement(selector) {
+    $(window).scroll(function () {
+      var top_of_element = $(selector).offset().top;
+      var bottom_of_element = $(selector).offset().top + $(selector).outerHeight();
+      var bottom_of_screen = $(window).scrollTop() + $(window).innerHeight();
+      var top_of_screen = $(window).scrollTop();
+      
+      if ((bottom_of_screen > top_of_element) && (top_of_screen < bottom_of_element)) {
+        setTimeout(function(){
+          $(selector).fadeIn("slow");
+        },2000)
+      }
+    });
+  }
+*/
+
+
+
 
 
 });

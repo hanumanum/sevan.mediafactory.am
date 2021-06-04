@@ -396,7 +396,7 @@ path.leaflet-interactive.animate {
   height          : var(--map-height);
   overflow        : auto;
   background-color: #ffffffde;
-  opacity: 0;
+  opacity         : 0;
 }
 
 
@@ -534,7 +534,7 @@ path.leaflet-interactive.animate {
 }
 
 #nav-arrow-before-start {
-  margin  : 80px auto 0 auto;
+  margin: 80px auto 0 auto;
 }
 
 
@@ -606,4 +606,24 @@ path.leaflet-interactive.animate {
 #overlay1 p {
   font-weight: normal;
   margin-top : 40px;
+}
+
+
+
+.pollution-intro {
+  width    : 50%;
+  font-size: 22px;
+  margin   : 50px auto 16px auto;
+}
+
+.pollution-intro-metodology {
+  width    : 50%;
+  font-size: 22px;
+  margin   : 32px auto 40px auto;
+}
+
+.pollution-intro-metodology-list {
+  width    : 50%;
+  font-size: 22px;
+  margin   : 18px auto 40px auto;
 }
