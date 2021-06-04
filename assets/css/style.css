@@ -609,11 +609,12 @@ path.leaflet-interactive.animate {
 }
 
 .pollution-intro-holder {
-  width           : 50%;
-  margin          : 42px auto;
-  background-color: #000000c9;
-  color           : #ebe5e5;
-  padding         : 14px;
+  width: 50%;
+  margin: 42px auto;
+  background-color: #ffffff;
+  color: black;
+  padding: 14px;
+  border: solid 3px var(--main-color);
 }
 
 
