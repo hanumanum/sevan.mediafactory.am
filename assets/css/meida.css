@@ -268,11 +268,13 @@
     font-size: 14px;
   }
 
-
-
   #overlay1, #overlay2{
     height: 100%;
     background-color: rgba(0, 0, 0, .8);
+  }
+
+  #start-jorney, #nav-arrow-start{
+    display: none;
   }
 }
 
