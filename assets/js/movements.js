@@ -51,8 +51,9 @@ class Movements {
 
 function flyAndSetMarker(nextStep, currentIndex) {
     L.marker(nextStep).addTo(sevanMap);
-    sevanMap.flyTo(nextStep, CONFIG.finalZoom, {
+    sevanMap.flyTo(nextStep,  CONFIG.finalZoom , {
         animate: true,
         duration: CONFIG.flyToDuration / 1000
     })
+    //sevanMap.center(nextStep)
 }

@@ -87,22 +87,33 @@ function initEvents(jd) {
     })
 
 
+    /*
+    //TODO:FOR DEBUG REMOVE AFTER
+    setTimeout(function(){
+        $("#overlay1").slideUp("slow")
+        $("#story-container").css("opacity", 1)
+        $("#overlay2").fadeIn("slow")
+
+        $("#overlay2").slideUp("slow", function () {
+            $("#nav-arrow-prev").fadeIn("slow")
+            mov.flyFirst()
+        })
+
+    }, 1000)
+    */
+
     function handleArrowsBehavior(index) {
         if (index == 0) {
-            $("#nav-arrow-prev").hide()
-            $("#nav-arrow-next").fadeIn("slow")
-            console.log("0")
-
-        }
-        else if (index == _jd.length) {
-            $("#nav-arrow-prev").fadeIn("slow")
             $("#nav-arrow-next").hide()
-            console.log("end")
+            $("#nav-arrow-prev").fadeIn("slow")
+        }
+        else if (index == _jd.length-1) {
+            $("#nav-arrow-next").fadeIn("slow")
+            $("#nav-arrow-prev").hide()
         }
         else {
             $("#nav-arrow-prev").fadeIn("slow")
             $("#nav-arrow-next").fadeIn("slow")
-            console.log("all")
         }
 
     }

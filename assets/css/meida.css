@@ -234,3 +234,57 @@
 }
 
 
+@media only screen and (max-width: 425px) {
+  #story-container{
+    width:100%;
+    height: 500px;
+    top:200px;
+    border-bottom: solid 1px #00b1a3;
+  }
+
+  #sevanmap{
+    height: 200px;
+  }
+
+  #mediafactorylogo{
+    margin-top: 540px;
+  }
+
+  #nav-arrow-next{
+    top: 124px;
+    right: 10px;
+    left: initial;
+    width: 50px;
+  }
+
+  #nav-arrow-prev{
+    top: 160px;
+    right: 10px;
+    left: initial;
+    width: 50px;
+  }
+
+  .overlay p{
+    font-size: 16px;
+  }
+
+
+
+  #overlay1, #overlay2{
+    height: 100%;
+    background-color: rgba(0, 0, 0, .8);
+  }
+}
+
+/*
+const mapheight = 200 
+const windwowidth = window.innerWidth
+const svnmap =  document.getElementById("sevanmap")
+if(windwowidth<=320){
+  svnmap.style.height = mapheight+"px"
+  const story = document.getElementById("story-container")
+  const footerLogo = document.getElementById("mediafactorylogo")
+  story.style.top = mapheight + "px"
+  //footerLogo.style.marginTop = "540px"
+}
+*/

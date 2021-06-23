@@ -640,3 +640,7 @@ path.leaflet-interactive.animate {
   margin: 0 auto;
   width: 90%;
 }
+
+.leaflet-control-attribution.leaflet-control{
+  display: none;
+}
