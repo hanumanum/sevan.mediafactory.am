@@ -80,29 +80,26 @@ function initEvents(jd) {
         console.log(ev.latlng.lat, ev.latlng.lng)
     });
 
-    $("#nav-arrow-before-start, #overlay1").click(function(ev){
+    $("#nav-arrow-before-start, #overlay1").click(function (ev) {
         $("#overlay1").slideUp("slow")
-        $("#story-container").css("opacity",1)
+        $("#story-container").css("opacity", 1)
         $("#overlay2").fadeIn("slow")
     })
 
 
-    function handleArrowsBehavior(index){
-        /*console.clear()
-        console.log(index, _jd.length)
-        */
-        if(index==0){
+    function handleArrowsBehavior(index) {
+        if (index == 0) {
             $("#nav-arrow-prev").hide()
             $("#nav-arrow-next").fadeIn("slow")
             console.log("0")
 
         }
-        else if(index==_jd.length){
+        else if (index == _jd.length) {
             $("#nav-arrow-prev").fadeIn("slow")
             $("#nav-arrow-next").hide()
             console.log("end")
         }
-        else{
+        else {
             $("#nav-arrow-prev").fadeIn("slow")
             $("#nav-arrow-next").fadeIn("slow")
             console.log("all")

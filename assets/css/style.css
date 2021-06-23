@@ -150,9 +150,12 @@ footer p {
   text-transform: uppercase;
 }
 
-.sponsors-text {
+.sponsors-text, .desclimer {
   font-size: 14px;
+  padding: 5px 11px;
+  width: 50%;
 }
+
 
 .st0 {
   fill: #17b0a2;
