@@ -308,6 +308,10 @@
     z-index: -5;
   }
 
+  #nav-arrow-before-start, #nav-arrow-start{
+    display: none;
+  }
+
   .overlay p {
     font-size: 14px;
   }
