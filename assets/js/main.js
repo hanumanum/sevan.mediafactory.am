@@ -10,6 +10,7 @@ $(document).ready(function () {
   makeNavigation()
   makeFooter()
 
+  stopPageScroll()
 
   function makeFooter() {
     $("footer").load("./templates/footer.html")

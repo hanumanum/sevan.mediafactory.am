@@ -1,4 +1,9 @@
 @media only screen and (max-width: 600px) {
+
+  .story-part h2 {
+    font-size: 17px;
+  }
+
   #main-menu {
     margin-right: -260px;
     transition  : 0.3s;
@@ -66,7 +71,7 @@
   }
 
   p {
-    font-size: 1em;
+    /* font-size: 1em; */
   }
 
   iframe {
@@ -95,7 +100,6 @@
 
   .sponsors-text {
     font-size: 11px;
-    width    : 233px;
     padding  : 0px;
   }
 
@@ -219,15 +223,19 @@
 }
 
 @media only screen and (max-width: 980px) {
-  .overlay p{
+  .overlay p {
     font-size: 18px;
   }
 
-  #overlay1 p{
-    margin-top:0px;
+  .story-part h2 {
+    font-size: 18px;
   }
 
-  #overlay1 div{
+  #overlay1 p {
+    margin-top: 0px;
+  }
+
+  #overlay1 div {
     width: 90%;
   }
 
@@ -235,47 +243,70 @@
 
 
 @media only screen and (max-width: 425px) {
-  #story-container{
-    width:100%;
-    height: 500px;
-    top:200px;
-    border-bottom: solid 1px #00b1a3;
+  #story-container {
+    width        : 100%;
+    top          : 210px;
+    height: auto;
   }
 
-  #sevanmap{
+  #sevanmap {
     height: 200px;
   }
 
-  #mediafactorylogo{
+  #mediafactorylogo {
     margin-top: 540px;
   }
 
-  #nav-arrow-next{
-    top: 124px;
-    right: 10px;
-    left: initial;
-    width: 50px;
+  #nav-arrow-next {
+    top    : 124px;
+    right  : 10px;
+    left   : initial;
+    width  : 50px;
+    display: none;
+    z-index: -5;
   }
 
-  #nav-arrow-prev{
-    top: 160px;
-    right: 10px;
-    left: initial;
-    width: 50px;
+  #nav-arrow-prev {
+    top    : 160px;
+    right  : 10px;
+    left   : initial;
+    width  : 50px;
+    display: none;
+    z-index: -5;
   }
 
-  .overlay p{
+  .overlay p {
     font-size: 14px;
   }
 
-  #overlay1, #overlay2{
-    height: 100%;
+  .story-part{
+    min-height: initial;
+  }
+
+  .story-part h2 {
+    font-size    : 16px;
+    margin-bottom: 5px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  #overlay1,
+  #overlay2 {
+    height          : 100%;
     background-color: rgba(0, 0, 0, .8);
   }
 
-  #start-jorney, #nav-arrow-start{
+  #start-jorney,
+  #nav-arrow-start {
     display: none;
   }
+
+  footer{
+    margin-top:306px;
+  }
+
 }
 
 /*

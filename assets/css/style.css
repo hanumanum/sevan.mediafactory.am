@@ -150,10 +150,11 @@ footer p {
   text-transform: uppercase;
 }
 
-.sponsors-text, .desclimer {
+.sponsors-text,
+.desclimer {
   font-size: 14px;
-  padding: 5px 11px;
-  width: 50%;
+  padding  : 5px 11px;
+  width    : 50%;
 }
 
 
@@ -551,11 +552,11 @@ path.leaflet-interactive.animate {
 }
 
 .overlay {
-  position        : absolute;
+  position        : fixed;
   top             : 0;
   left            : 0;
   width           : 100%;
-  height          : var(--map-height);
+  height          : 100%;
   background-color: rgba(0, 0, 0, .6);
   color           : white;
   z-index         : 999;
@@ -580,13 +581,13 @@ path.leaflet-interactive.animate {
 }
 
 #start-jorney {
-  font-size       : 22px;
   color           : white;
+  font-size       : 22px;
   text-transform  : uppercase;
+  display: block;
   width           : fit-content;
-  margin          : 5px auto;
-  display         : inherit;
-  margin-top      : 90px;
+  width           : -moz-fit-content;
+  margin          : 90px auto 5px auto;
   background-color: var(--main-color);
   padding         : 4px;
   opacity         : 0.7;
@@ -612,12 +613,12 @@ path.leaflet-interactive.animate {
 }
 
 .pollution-intro-holder {
-  width: 50%;
-  margin: 42px auto;
+  width           : 50%;
+  margin          : 42px auto;
   background-color: #ffffff;
-  color: black;
-  padding: 14px;
-  border: solid 3px var(--main-color);
+  color           : black;
+  padding         : 14px;
+  border          : solid 3px var(--main-color);
 }
 
 
@@ -636,11 +637,11 @@ path.leaflet-interactive.animate {
   margin   : 18px auto 0px auto;
 }
 
-#pollution-iframe{
+#pollution-iframe {
   margin: 0 auto;
-  width: 90%;
+  width : 90%;
 }
 
-.leaflet-control-attribution.leaflet-control{
+.leaflet-control-attribution.leaflet-control {
   display: none;
 }
