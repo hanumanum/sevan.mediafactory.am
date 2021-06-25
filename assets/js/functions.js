@@ -62,22 +62,10 @@ function initEvents(jd) {
     const mov = new Movements(_jd)
 
     const slider = $(CONFIG.storyHolderSelector)
-        /*.on('init', function (slick) {
-
-            // on init run our multi slide adaptive height function
-            multiSlideAdaptiveHeight(this);
-
-        }).on('beforeChange', function (slick, currentSlide, nextSlide) {
-
-            // on beforeChange run our multi slide adaptive height function
-            multiSlideAdaptiveHeight(this);
-
-        })*/
         .slick({
             vertical: true,
             swipe: true,
             infinite: false,
-            /* adaptiveHeight: true, */
             slidesToShow: 1,
             slidesToScroll: 1,
             prevArrow: "#nav-arrow-next",
@@ -92,13 +80,6 @@ function initEvents(jd) {
 
 
 
-    slider.on("beforeChange", function (event, slick, currentSlide, nextSlide) {
-        const _nextSlideHeight = $("#story-id" + nextSlide).outerHeight()
-        //$(".slick-list.draggable").height(Math.ceil(_nextSlideHeight))
-        //console.log(nextSlide, _nextSlide)
-    })
-
-
     $("#nav-arrow-prev, #nav-arrow-next").hide()
 
 
@@ -106,6 +87,7 @@ function initEvents(jd) {
         e.preventDefault()
         $("#overlay2").slideUp("slow", function () {
             $("#nav-arrow-prev").fadeIn("slow")
+            $("#overlay0").fadeOut(5)
             mov.flyFirst()
             restorePageScroll()
         })

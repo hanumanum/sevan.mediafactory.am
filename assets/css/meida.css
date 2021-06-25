@@ -243,9 +243,42 @@
 
 
 @media only screen and (max-width: 425px) {
+
+  #overlay0 {
+    height          : 100%;
+    width           : 100%;
+    display         : block;
+    position        : fixed;
+    top             : 0;
+    left            : 0;
+    background-image: url("../../images/map-for-mobile.png");
+    z-index: 999;
+  }
+
+  #overlay1,
+  #overlay2 {
+    height          : 100%;
+    background-color: rgba(0, 0, 0, .8);
+    align-items     : start;
+    padding-top     : 30px;
+
+  }
+
+  #overlay2>h1 {
+    font-size : 27px;
+    margin-top: 100px;
+    margin    : 80px auto 45px auto;
+  }
+
+  #overlay2 p {
+    width    : 80%;
+    margin   : 32px auto 22px auto;
+    /* margin: inherit auto; */
+  }
+
   #story-container {
-    width        : 100%;
-    top          : 210px;
+    width : 100%;
+    top   : 210px;
     height: auto;
   }
 
@@ -279,8 +312,9 @@
     font-size: 14px;
   }
 
-  .story-part{
+  .story-part {
     min-height: initial;
+    padding   : 0px 8px;
   }
 
   .story-part h2 {
@@ -292,19 +326,18 @@
     font-size: 16px;
   }
 
-  #overlay1,
-  #overlay2 {
-    height          : 100%;
-    background-color: rgba(0, 0, 0, .8);
-  }
 
-  #start-jorney,
-  #nav-arrow-start {
+  #start-jorney {
     display: none;
   }
 
-  footer{
-    margin-top:306px;
+  .sponsors-text,
+  .desclimer {
+    width: 70%;
+  }
+
+  footer {
+    margin-top: 306px;
   }
 
 }

@@ -153,8 +153,8 @@ footer p {
 .sponsors-text,
 .desclimer {
   font-size: 14px;
-  padding  : 5px 11px;
-  width    : 50%;
+  padding  : 30px 5px;
+  width    : 70%;
 }
 
 
@@ -545,6 +545,10 @@ path.leaflet-interactive.animate {
 #nav-arrow-next:hover,
 #nav-arrow-prev:hover {
   opacity: 1;
+}
+
+#overlay0 {
+  display: none;
 }
 
 #overlay2 {
