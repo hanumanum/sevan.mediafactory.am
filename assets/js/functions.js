@@ -79,30 +79,15 @@ function initEvents(jd) {
     })
 
 
-
     $("#nav-arrow-prev, #nav-arrow-next").hide()
 
 
-    $("#start-jorney, #nav-arrow-start, #overlay2").click(function (e) {
-        e.preventDefault()
-        $("#overlay2").slideUp("slow", function () {
-            $("#nav-arrow-prev").fadeIn("slow")
-            $("#overlay0").fadeOut(5)
-            mov.flyFirst()
-            restorePageScroll()
-        })
-    })
+    $("#start-jorney, #nav-arrow-start, #overlay2").click(processOverlay2)
+    $("#overlay2").on("swipe", processOverlay2)
 
-    sevanMap.addEventListener('click', function (ev) {
-        console.log(ev.latlng.lat, ev.latlng.lng)
-    });
 
-    $("#nav-arrow-before-start, #overlay1").click(function (ev) {
-        $("#overlay1").slideUp("slow")
-        $("#story-container").css("opacity", 1)
-        $("#overlay2").fadeIn("slow")
-    })
-
+    $("#nav-arrow-before-start, #overlay1").click(processOverlay1)
+    $("#overlay1").on("swipe", processOverlay1)
 
     /*
     //TODO:FOR DEBUG REMOVE AFTER
@@ -118,6 +103,25 @@ function initEvents(jd) {
 
     }, 1000)
     */
+
+
+    function processOverlay2(e){
+        e.preventDefault()
+        $("#overlay2").slideUp("slow", function () {
+            $("#nav-arrow-prev").fadeIn("slow")
+            $("#overlay0").fadeOut(5)
+            mov.flyFirst()
+            restorePageScroll()
+        })
+
+    }
+
+    function processOverlay1(e){
+        $("#overlay1").slideUp("slow")
+        $("#story-container").css("opacity", 1)
+        $("#overlay2").fadeIn("slow")
+    }
+
 
     function handleArrowsBehavior(index) {
         if (index == 0) {
