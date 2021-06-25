@@ -340,6 +340,14 @@
     margin-top: 306px;
   }
 
+  #touch-tooltip{
+    position: fixed;
+    right: 17px;
+    bottom: 16px;
+    z-index: 999;
+    display: block;
+    width: 12%;  }
+
 }
 
 /*

@@ -171,7 +171,9 @@ footer p {
   fill: #117a72;
 }
 
-
+#touch-tooltip{
+  display: none;
+}
 
 
 
