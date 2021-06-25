@@ -1,4 +1,6 @@
 $(document).ready(function () {
+  jQuery.migrateMute = true;
+
   const click = (tag, pixel, zindex, transition) => {
     $(tag).on("click", () => {
       $("#main-menu").css({ "margin-right": pixel });

@@ -89,6 +89,10 @@ function initEvents(jd) {
     $("#nav-arrow-before-start, #overlay1").click(processOverlay1)
     $("#overlay1").on("swipe", processOverlay1)
 
+    $("#overlay1, #overlay2").on("swipe", function(e){
+        console.log(e)
+    })
+
     /*
     //TODO:FOR DEBUG REMOVE AFTER
     setTimeout(function(){
