@@ -110,7 +110,7 @@ function initEvents(jd) {
 
 
     function processOverlay2(e){
-        e.preventDefault()
+        //e.preventDefault()
         $("#overlay2").slideUp("slow", function () {
             $("#nav-arrow-prev").fadeIn("slow")
             $("#overlay0").fadeOut(5)

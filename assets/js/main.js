@@ -16,6 +16,7 @@ $(document).ready(function () {
   makeFooter()
 
   //stopPageScroll()
+  stopPageScroll()
 
   function makeFooter() {
     $("footer").load("./templates/footer.html")
