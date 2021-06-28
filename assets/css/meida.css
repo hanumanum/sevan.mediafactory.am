@@ -1,5 +1,14 @@
 @media only screen and (max-width: 600px) {
 
+  .pollution-intro-holder{
+    width: 90%;
+  }
+
+  #pollution-iframe{
+    width: 100%;
+    margin: 0;
+  }
+
   .story-part h2 {
     font-size: 17px;
   }
@@ -40,7 +49,7 @@
     top             : 15px;
     right           : 13px;
     background-color: #00b1a3;
-    z-index         : 2;
+    z-index         : 9999;
   }
 
   #menu i {
@@ -54,7 +63,7 @@
   #cancel {
     position: relative;
     right   : -261px;
-    top     : 12px;
+    top     : 4px;
   }
 
   .show {
@@ -252,7 +261,7 @@
     top             : 0;
     left            : 0;
     background-image: url("../../images/map-for-mobile.png");
-    z-index: 999;
+    z-index         : 999;
   }
 
   #overlay1,
@@ -308,7 +317,8 @@
     z-index: -5;
   }
 
-  #nav-arrow-before-start, #nav-arrow-start{
+  #nav-arrow-before-start,
+  #nav-arrow-start {
     display: none;
   }
 
@@ -344,13 +354,16 @@
     margin-top: 306px;
   }
 
-  #touch-tooltip{
+  #touch-tooltip {
     position: fixed;
-    right: 17px;
-    bottom: 16px;
-    z-index: 999;
-    display: block;
-    width: 12%;  }
+    right   : 17px;
+    bottom  : 16px;
+    z-index : 999;
+    display : block;
+    width   : 12%;
+  }
+
+
 
 }
 
