@@ -1,11 +1,11 @@
 @media only screen and (max-width: 600px) {
 
-  .pollution-intro-holder{
+  .pollution-intro-holder {
     width: 90%;
   }
 
-  #pollution-iframe{
-    width: 100%;
+  #pollution-iframe {
+    width : 100%;
     margin: 0;
   }
 
@@ -241,7 +241,9 @@
   }
 
   #overlay1 p {
-    margin-top: 0px;
+    margin-top   : 23px;
+    width        : 94%;
+    margin-bottom: initial;
   }
 
   #overlay1 div {

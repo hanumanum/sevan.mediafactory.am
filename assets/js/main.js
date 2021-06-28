@@ -16,7 +16,12 @@ $(document).ready(function () {
   makeFooter()
 
   //stopPageScroll()
-  stopPageScroll()
+
+  
+  if(typeof(stopPageScroll) !== 'undefined'){
+    stopPageScroll()
+  }
+  
 
   function makeFooter() {
     $("footer").load("./templates/footer.html")
@@ -42,4 +47,3 @@ $(document).ready(function () {
     });
   }
 });
-

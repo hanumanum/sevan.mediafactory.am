@@ -591,7 +591,7 @@ path.leaflet-interactive.animate {
   font-size  : 18px;
 }
 
-#start-jorney {
+#start-jorney, #read-jorney {
   color           : white;
   font-size       : 22px;
   text-transform  : uppercase;
@@ -600,11 +600,11 @@ path.leaflet-interactive.animate {
   width           : -moz-fit-content;
   margin          : 90px auto 5px auto;
   background-color: var(--main-color);
-  padding         : 4px;
+  padding         : 4px 8px;
   opacity         : 0.7;
 }
 
-#start-jorney:hover {
+#start-jorney:hover, #read-jorney:hover {
   opacity: 1;
 }
 
@@ -620,7 +620,9 @@ path.leaflet-interactive.animate {
 
 #overlay1 p {
   font-weight: normal;
-  margin-top : 40px;
+  margin-top: 40px;
+  width: 70%;
+  margin: 40px auto;
 }
 
 .pollution-intro-holder {

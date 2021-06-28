@@ -78,46 +78,21 @@ function initEvents(jd) {
         mov.flyTo(id, handleArrowsBehavior)
     })
 
-
     $("#nav-arrow-prev, #nav-arrow-next").hide()
 
-
-    $("#start-jorney, #nav-arrow-start, #overlay2").click(processOverlay2)
+    $("#start-jorney, #nav-arrow-start, #overlay2").on("click",processOverlay2)
     $("#overlay2").on("swipe", processOverlay2)
-
-
-    $("#nav-arrow-before-start, #overlay1").click(processOverlay1)
+    
+    $("#nav-arrow-before-start, #overlay1").on("click", processOverlay1)
     $("#overlay1").on("swipe", processOverlay1)
 
-    $("#overlay1, #overlay2").on("swipe", function(e){
-        console.log(e)
-    })
-
-    /*
-    //TODO:FOR DEBUG REMOVE AFTER
-    setTimeout(function(){
-        $("#overlay1").slideUp("slow")
-        $("#story-container").css("opacity", 1)
-        $("#overlay2").fadeIn("slow")
-
-        $("#overlay2").slideUp("slow", function () {
-            $("#nav-arrow-prev").fadeIn("slow")
-            mov.flyFirst()
-        })
-
-    }, 1000)
-    */
-
-
     function processOverlay2(e){
-        //e.preventDefault()
+        $("#overlay0").fadeOut(.5)
         $("#overlay2").slideUp("slow", function () {
             $("#nav-arrow-prev").fadeIn("slow")
-            $("#overlay0").fadeOut(5)
             mov.flyFirst()
             restorePageScroll()
         })
-
     }
 
     function processOverlay1(e){
