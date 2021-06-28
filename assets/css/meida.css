@@ -1,12 +1,18 @@
 @media only screen and (max-width: 600px) {
 
-  .pollution-intro-holder {
-    width: 90%;
-  }
-
   #pollution-iframe {
     width : 100%;
     margin: 0;
+  }
+  
+  .pollution-intro-holder {
+    width: 90%;
+    border: none; /* solid 1px var(--main-color); */
+    margin:10px auto;
+  }
+
+  .pollution-intro, .pollution-intro-metodology, .pollution-intro-metodology-list{
+    font-size: 18px;
   }
 
   .story-part h2 {
@@ -72,7 +78,7 @@
 
   .heading-title {
     margin   : 0px;
-    font-size: 2em;
+    font-size: 1.5em;
   }
 
   #content {
@@ -354,6 +360,14 @@
 
   footer {
     margin-top: 306px;
+  }
+
+  #footer-pollution{
+    margin-top:0px;
+  }
+
+  #footer-pollution > #mediafactorylogo{
+    margin-top:15px;
   }
 
   #touch-tooltip {
