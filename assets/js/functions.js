@@ -45,12 +45,28 @@ function makeStoryPart(point, i) {
 }
 
 
-function unifySlidesHeights(){
+function unifySlidesHeights() {
     let tailest = -1
     $.each($(".story-part"), function (index, slide) {
         tailest = Math.max(tailest, $(slide).outerHeight())
     });
     $(".story-part").outerHeight(tailest)
+}
+
+
+function scrollWheel(callback, slider, refresh = 200) {
+    if (!callback || typeof callback !== 'function') return;
+    let isScrolling;
+    window.addEventListener('wheel', handleWheelFunctionality , false);
+
+    function handleWheelFunctionality(event){
+        window.clearTimeout(isScrolling);
+        isScrolling = setTimeout(function () {
+            callback(event, slider)
+        }, refresh);
+    }
+
+    return handleWheelFunctionality;
 }
 
 
@@ -78,15 +94,38 @@ function initEvents(jd) {
         mov.flyTo(id, handleArrowsBehavior)
     })
 
+
+    $("#story-container, #mapholder").on("mouseenter", function () {
+        stopPageScroll()
+        const handleWheelFunctionality = scrollWheel(function (e) {
+            if (e.deltaY > 0) {
+                slider.slick("slickNext")
+            }
+            else {
+                slider.slick("slickPrev")
+            }
+        }, slider)
+
+
+        $("#story-container #mapholder").on("mouseleave", function () {
+            restorePageScroll()
+            window.removeEventListener('wheel', handleWheelFunctionality);
+        })
+    })
+
+
+
     $("#nav-arrow-prev, #nav-arrow-next").hide()
 
-    $("#start-jorney, #nav-arrow-start, #overlay2").on("click",processOverlay2)
+    $("#start-jorney, #nav-arrow-start, #overlay2").on("click", processOverlay2)
+    $("#start-jorney, #nav-arrow-start, #overlay2").on("wheel", processOverlay2)
     $("#overlay2").on("swipe", processOverlay2)
-    
+
     $("#nav-arrow-before-start, #overlay1").on("click", processOverlay1)
+    $("#nav-arrow-before-start, #overlay1").on("wheel", processOverlay1)
     $("#overlay1").on("swipe", processOverlay1)
 
-    function processOverlay2(e){
+    function processOverlay2(e) {
         $("#overlay0").fadeOut(.5)
         $("#overlay2").slideUp("slow", function () {
             $("#nav-arrow-prev").fadeIn("slow")
@@ -95,11 +134,12 @@ function initEvents(jd) {
         })
     }
 
-    function processOverlay1(e){
+    function processOverlay1(e) {
         $("#overlay1").slideUp("slow")
         $("#story-container").css("opacity", 1)
         $("#overlay2").fadeIn("slow")
-    }
+        //$("#story-container, #mapholder").trigger("mouseenter")
+    }   
 
 
     function handleArrowsBehavior(index) {
@@ -122,36 +162,24 @@ function initEvents(jd) {
 
 
 function multiSlideAdaptiveHeight(slider) {
-
-    // set our vars
     let activeSlides = [];
     let tallestSlide = 0;
 
-    // very short delay in order for us get the correct active slides
     setTimeout(function () {
-
-        // loop through each active slide for our current slider
         $('.slick-track .slick-active', slider).each(function (item) {
-
-            // add current active slide height to our active slides array
             activeSlides[item] = $(this).outerHeight();
-
         });
 
-        // for each of the active slides heights
         activeSlides.forEach(function (item) {
 
-            // if current active slide height is greater than tallest slide height
             if (item > tallestSlide) {
 
-                // override tallest slide height to current active slide height
                 tallestSlide = item;
 
             }
 
         });
 
-        // set the current slider slick list height to current active tallest slide height
         $('.slick-list', slider).height(tallestSlide);
 
     }, 10);
@@ -202,3 +230,5 @@ function restorePageScroll() {
         height: 'auto'
     });
 }
+
+

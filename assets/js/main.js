@@ -15,9 +15,7 @@ $(document).ready(function () {
   makeNavigation()
   makeFooter()
 
-  //stopPageScroll()
-
-  
+ 
   if(typeof(stopPageScroll) !== 'undefined'){
     stopPageScroll()
   }
