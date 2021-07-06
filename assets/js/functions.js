@@ -107,7 +107,7 @@ function initEvents(jd) {
         }, slider)
 
 
-        $("#story-container #mapholder").on("mouseleave", function () {
+        $("#story-container, #mapholder").on("mouseleave", function () {
             restorePageScroll()
             window.removeEventListener('wheel', handleWheelFunctionality);
         })
@@ -130,7 +130,7 @@ function initEvents(jd) {
         $("#overlay2").slideUp("slow", function () {
             $("#nav-arrow-prev").fadeIn("slow")
             mov.flyFirst()
-            restorePageScroll()
+            //restorePageScroll()
         })
     }
 
